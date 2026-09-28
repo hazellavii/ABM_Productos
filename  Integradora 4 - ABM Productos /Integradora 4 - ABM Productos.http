@@ -1,0 +1,6 @@
+@Integradora_4___ABM_Productos_HostAddress = http://localhost:5069
+
+GET {{Integradora_4___ABM_Productos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
