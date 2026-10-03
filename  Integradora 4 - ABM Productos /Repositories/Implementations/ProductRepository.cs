@@ -1,8 +1,10 @@
 using Integradora_4___ABM_Productos.Entities;
 
+using Integradora_4___ABM_Productos.Repositories.Interfaces;
+
 namespace Integradora_4___ABM_Productos.Repositories.Implementations;
 
-public class ProductRepository
+public class ProductRepository : IProductRepository
 {
     private static List<Product>_products = new()
     {

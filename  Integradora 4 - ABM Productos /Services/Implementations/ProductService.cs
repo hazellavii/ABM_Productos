@@ -5,9 +5,11 @@ using Integradora_4___ABM_Productos.Models.DTOs.Responses;
 using Integradora_4___ABM_Productos.Entities;
 using Integradora_4___ABM_Productos.Models.DTOs.Requests;
 
+using Integradora_4___ABM_Productos.Services.Interfaces;
+
 namespace Integradora_4___ABM_Productos.Services.Implementations;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private ProductRepository _repository = new ProductRepository();
     
