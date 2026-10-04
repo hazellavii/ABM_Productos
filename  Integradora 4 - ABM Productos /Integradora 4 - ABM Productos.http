@@ -48,3 +48,60 @@ GET http://localhost:5069/api/products/search?name=zzzzzz
 
 ### Consultar estadísticas
 GET http://localhost:5069/api/products/stats
+
+
+### Crear producto con nombre inválido
+POST http://localhost:5069/api/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 100
+}
+
+
+### Comprobar el breakpoint con datos válidos
+POST http://localhost:5069/api/products
+Content-Type: application/json
+
+{
+  "name": "Producto de prueba",
+  "price": 100
+}
+
+
+### Crear producto con nombre repetido
+POST http://localhost:5069/api/products
+Content-Type: application/json
+
+{
+  "name": "TECLADO MECÁNICO",
+  "price": 100
+}
+
+### Actualizar con nombre de otro producto
+PUT http://localhost:5069/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Teclado mecánico",
+  "price": 4500
+}
+
+### Actualizar precio conservando el nombre
+PUT http://localhost:5069/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Mouse inalámbrico",
+  "price": 4500
+}
+
+### Crear producto con precio cero
+POST http://localhost:5069/api/products
+Content-Type: application/json
+
+{
+  "name": "Producto precio cero",
+  "price": 0
+}

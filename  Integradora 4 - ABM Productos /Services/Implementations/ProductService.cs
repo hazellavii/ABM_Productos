@@ -50,6 +50,15 @@ public class ProductService : IProductService
     
     public ProductForReadDto CreateProduct(ProductForCreateDto dto)
     {
+        var exists = _repository.GetAllProducts().Any(p =>
+            string.Equals(p.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+
+        if (exists)
+        {
+            throw new InvalidOperationException(
+                "Ya existe un producto con ese nombre.");
+        }
+        
         var product = new Product
         {
             Name = dto.Name,
@@ -73,6 +82,16 @@ public class ProductService : IProductService
         if (product is null)
         {
             return;
+        }
+        
+        var exists = _repository.GetAllProducts().Any(p =>
+            p.Id != id &&
+            string.Equals(p.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+
+        if (exists)
+        {
+            throw new InvalidOperationException(
+                "Ya existe un producto con ese nombre.");
         }
 
         product.Name = dto.Name;

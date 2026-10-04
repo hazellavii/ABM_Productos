@@ -38,12 +38,19 @@ public class ProductsController : ControllerBase
     [HttpPost]
     public IActionResult Create(ProductForCreateDto dto)
     {
-        var product = _service.CreateProduct(dto);
+        try
+        {
+            var product = _service.CreateProduct(dto);
 
-        return CreatedAtAction(
-            nameof(GetById),
-            new { id = product.Id },
-            product);
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = product.Id },
+                product);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
     
     
@@ -57,10 +64,17 @@ public class ProductsController : ControllerBase
             return NotFound();
         }
 
-        _service.UpdateProduct(id, dto);
-
-        return NoContent();
+        try
+        {
+            _service.UpdateProduct(id, dto);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
+    
     
     
     [HttpDelete("{id}")]
