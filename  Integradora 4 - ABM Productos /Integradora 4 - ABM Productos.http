@@ -4,3 +4,37 @@ GET {{Integradora_4___ABM_Productos_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Crear un producto
+POST http://localhost:5069/api/products
+Content-Type: application/json
+
+{
+  "name": "Parlante portátil",
+  "price": 25000
+}
+
+### Obtener todos los productos
+GET http://localhost:5069/api/products
+Accept: application/json
+
+### Actualizar el producto 1
+PUT http://localhost:5069/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Mouse inalámbrico actualizado",
+  "price": 4500
+}
+
+### Actualizar un producto que no existe
+PUT http://localhost:5069/api/products/999
+Content-Type: application/json
+
+{
+  "name": "Producto de prueba",
+  "price": 4500
+}
+
+### Eliminar el producto 2
+DELETE http://localhost:5069/api/products/2
