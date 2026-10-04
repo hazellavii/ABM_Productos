@@ -77,4 +77,22 @@ public class ProductsController : ControllerBase
 
         return NoContent();
     }
+    
+    
+    [HttpGet("search")]
+    public IActionResult Search([FromQuery] string name)
+    {
+        var products = _service.SearchProductsByName(name);
+
+        return Ok(products);
+    }
+    
+    
+    [HttpGet("stats")]
+    public IActionResult GetStats()
+    {
+        var stats = _service.GetStats();
+
+        return Ok(stats);
+    }
 }

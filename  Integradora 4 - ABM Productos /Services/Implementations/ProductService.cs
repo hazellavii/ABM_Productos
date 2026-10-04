@@ -93,4 +93,48 @@ public class ProductService : IProductService
         _repository.DeleteProduct(product);
     }
     
+    
+    public List<ProductForReadDto> SearchProductsByName(string name)
+    {
+        var products = _repository.SearchProductsByName(name);
+        var result = new List<ProductForReadDto>();
+
+        foreach (var product in products)
+        {
+            result.Add(new ProductForReadDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price
+            });
+        }
+
+        return result;
+    }
+    
+    
+    public ProductStatsDto GetStats()
+    {
+        var products = _repository.GetAllProducts();
+
+        if (products.Count == 0)
+        {
+            return new ProductStatsDto
+            {
+                Total = 0,
+                AveragePrice = 0,
+                MostExpensiveName = string.Empty
+            };
+        }
+
+        return new ProductStatsDto
+        {
+            Total = products.Count,
+            AveragePrice = products.Average(p => p.Price),
+            MostExpensiveName = products
+                .OrderByDescending(p => p.Price)
+                .First().Name
+        };
+    }
+    
 }

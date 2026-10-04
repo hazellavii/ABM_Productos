@@ -38,3 +38,13 @@ Content-Type: application/json
 
 ### Eliminar el producto 2
 DELETE http://localhost:5069/api/products/2
+
+
+### Buscar sin distinguir mayúsculas
+GET http://localhost:5069/api/products/search?name=TECLADO
+
+### Buscar sin coincidencias
+GET http://localhost:5069/api/products/search?name=zzzzzz
+
+### Consultar estadísticas
+GET http://localhost:5069/api/products/stats
