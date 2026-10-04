@@ -3,14 +3,20 @@ using Integradora_4___ABM_Productos.Services.Implementations;
 
 using Integradora_4___ABM_Productos.Models.DTOs.Requests;
 
+using Integradora_4___ABM_Productos.Services.Interfaces;
+
 namespace Integradora_4___ABM_Productos.Controllers;
 
 [ApiController]
 [Route("api/products")]
 public class ProductsController : ControllerBase
 {
-    private ProductService _service = new ProductService();
-    
+    private readonly IProductService _service;
+
+    public ProductsController(IProductService service)
+    {
+        _service = service;
+    }    
     
     [HttpGet]
     public IActionResult GetAll()

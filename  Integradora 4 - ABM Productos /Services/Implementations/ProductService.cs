@@ -7,12 +7,18 @@ using Integradora_4___ABM_Productos.Models.DTOs.Requests;
 
 using Integradora_4___ABM_Productos.Services.Interfaces;
 
+using Integradora_4___ABM_Productos.Repositories.Interfaces;
+
 namespace Integradora_4___ABM_Productos.Services.Implementations;
 
 public class ProductService : IProductService
 {
-    private ProductRepository _repository = new ProductRepository();
-    
+    private readonly IProductRepository _repository;
+
+    public ProductService(IProductRepository repository)
+    {
+        _repository = repository;
+    }    
     public List<ProductForReadDto> GetAllProducts()
     {
         var products = _repository.GetAllProducts();

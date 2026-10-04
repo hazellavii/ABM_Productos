@@ -105,3 +105,43 @@ Content-Type: application/json
   "name": "Producto precio cero",
   "price": 0
 }
+
+### Buscar producto existente por ID
+GET http://localhost:5069/api/products/3
+
+### Buscar producto inexistente
+GET http://localhost:5069/api/products/999
+
+
+### Vaciar lista para probar estadísticas
+DELETE http://localhost:5069/api/products/1
+
+###
+DELETE http://localhost:5069/api/products/3
+
+###
+DELETE http://localhost:5069/api/products/4
+
+###
+DELETE http://localhost:5069/api/products/5
+
+###
+DELETE http://localhost:5069/api/products/6
+
+###
+DELETE http://localhost:5069/api/products/7
+
+###
+DELETE http://localhost:5069/api/products/8
+
+###
+DELETE http://localhost:5069/api/products/9
+
+###
+DELETE http://localhost:5069/api/products/10
+
+###
+DELETE http://localhost:5069/api/products/11
+
+### Estadísticas con lista vacía
+GET http://localhost:5069/api/products/stats
